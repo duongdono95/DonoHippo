@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { ArrowDownToLine, ArrowRight, BadgeCheck, Box, Clover } from 'lucide-react';
+import { ArrowDownToLine, ArrowRight, BadgeCheck, Clover } from 'lucide-react';
 import './styles.scss';
 import Provider from '@/GlobalStyles/Provider';
 import { Navbar } from '@/components/NavBar/NavBar';
@@ -34,8 +34,10 @@ export default function Home() {
             standards
           </p>
           <div className="buttons">
-            <Button variant="contained">Browse Trending</Button>
-            <Button color="secondary">
+            <Button sx={{ zIndex: '-1 !important' }} variant="contained">
+              Browse Trending
+            </Button>
+            <Button sx={{ zIndex: '-1 !important' }} color="secondary">
               Our quality promise <ArrowRight />
             </Button>
           </div>

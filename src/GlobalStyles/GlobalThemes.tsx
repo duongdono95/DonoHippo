@@ -1,33 +1,27 @@
 'use client';
-import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
 
-export const GlobalTheme = extendTheme({
-  colorSchemes: {
-    light: {
-      palette: {
-        primary: {
-          main: `rgb(var(--primary-code))`,
-        },
-        secondary: {
-          main: `rgb(var(--secondary-code))`,
-        },
-      },
+import { createTheme } from '@mui/material';
+export const GlobalTheme = createTheme({
+  palette: {
+    primary: {
+      main: `rgb(var(--primary-code))`,
     },
-    // dark: {
-    //   palette: {
-    //     primary: {
-    //       main: `${callVar('--white')}`,
-    //     },
-    //     background: {
-    //       default: `${callVar('--primary-dark')}`,
-    //     },
-    //     text: {
-    //       primary: `${callVar('--white')}`,
-    //     },
-    //   },
-    // },
+    secondary: {
+      main: `rgb(var(--secondary-code))`,
+    },
+    error: {
+      main: `rgba(var(--error-code))`,
+    },
+    success: {
+      main: `rgba(var(--success-code))`,
+    },
+    warning: {
+      main: `rgba(var(--warning-code))`,
+    },
+    info: {
+      main: `rgba(var(--info-code))`,
+    },
   },
-
   components: {
     //  ------------------------------------FORM LABEL
     MuiFormLabel: {
