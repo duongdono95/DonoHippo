@@ -1,13 +1,18 @@
 'use client';
 import { PRODUCT_CATEGORIES } from '@/config';
-import { Box, Button } from '@mui/material';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Box, Button, Popover } from '@mui/material';
+import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import ProductCategory from './ProductCategory';
 
-export const NavItems = () => {
+interface Props {
+  appBarRef: React.MutableRefObject<HTMLDivElement | null>;
+}
+
+export const NavItems = ({ appBarRef }: Props) => {
   const [activeCategory, setActiveCategory] = useState<ProductCategory | null>(null);
-  console.log(activeCategory);
+  const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
+
   return (
     <Box sx={{ display: 'flex', gap: ' 20px' }}>
       {PRODUCT_CATEGORIES.map((category, i) => {
@@ -16,7 +21,10 @@ export const NavItems = () => {
             key={i}
             color="secondary"
             sx={{ display: 'flex', gap: '5px' }}
-            onClick={() => setActiveCategory(category)}
+            onClick={(e) => {
+              activeCategory === null && setActiveCategory(category);
+              setAnchorEl(appBarRef.current);
+            }}
           >
             <p style={{ color: 'var(--black07)' }}>{category.label}</p>
             <ChevronDown
@@ -28,7 +36,23 @@ export const NavItems = () => {
           </Button>
         );
       })}
-      {activeCategory && <ProductCategory activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
+      {activeCategory && (
+        <Popover
+          open={Boolean(anchorEl)}
+          anchorEl={anchorEl}
+          onClose={() => setAnchorEl(null)}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <ProductCategory activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+        </Popover>
+      )}
     </Box>
   );
 };

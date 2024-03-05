@@ -13,7 +13,8 @@
   --success: rgb(57, 230, 97);
   --error: rgba(255, 0, 0);
   --warning: rgba(255, 140, 0);
-  --info: rgba(22, 163, 187);
+  --info-code: 0, 0, 0, 0.7;
+  --info: rgba(0, 0, 0, 0.7);
 
   // ----------------Default Colors
   --primary09: rgba(var(--primary-code), 0.9);
@@ -79,7 +80,7 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--text);
+  color: blue;
 }
 
 // Scrollbar CSS -----------------------------------

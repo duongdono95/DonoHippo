@@ -6,7 +6,7 @@ import { CssBaseline } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Provider = ({ children }: PropsWithChildren) => {
+const AppGeneralConfig = ({ children }: PropsWithChildren) => {
   return (
     <ThemeProvider theme={GlobalTheme}>
       <CssBaseline />
@@ -16,4 +16,4 @@ const Provider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default Provider;
+export default AppGeneralConfig;

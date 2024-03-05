@@ -1,0 +1,27 @@
+.sign-up-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary01);
+  .form {
+    min-width: 400px;
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px var(--black01);
+    h2 {
+      opacity: 0.7;
+    }
+    .guide {
+      opacity: 0.7;
+    }
+  }
+}
