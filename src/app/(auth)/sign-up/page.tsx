@@ -16,7 +16,9 @@ const page = () => {
     resolver: zodResolver(AuthCredentialsValidator),
   });
   console.log(errors);
-  // const { data } = trpc.auth.useQuery();
+  const { mutate, isLoading } = trpc.auth.createPayloadUser.useMutation({
+
+  })
   const onsubmit = ({ email, password }: TAuthCredentialsValidator) => {};
 
   return (
