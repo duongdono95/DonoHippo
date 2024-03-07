@@ -15,6 +15,12 @@ const page = () => {
   const router = useRouter();
   const isSeller = searchParams.get('as') === 'seller';
   const origin = searchParams.get('origin');
+  const continueAsSeller = () => {
+    router.push('?as=seller');
+  };
+  const continueAsBuyer = () => {
+    router.replace('/sign-in', undefined);
+  };
   const {
     register,
     handleSubmit,
@@ -54,7 +60,7 @@ const page = () => {
     <div className="sign-up-page">
       <form onSubmit={handleSubmit(onsubmit)} className="form">
         <Icons.logo />
-        <h2>Sign In to your account</h2>
+        <h2>Sign In to your {isSeller ? 'Seller' : ''} Account</h2>
         <p className="guide">
           Do not have an account with us? <Link href={'/sign-up'}>Sign Up</Link>
         </p>
@@ -80,10 +86,20 @@ const page = () => {
         <Button type="submit" variant="contained" fullWidth sx={{ margin: '20px' }}>
           Sign In
         </Button>
-      </form>
-      <Box>Or</Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ height: '2px', backgroundColor: 'var(--black01)', width: '100px' }}></div>
+          <p style={{ opacity: 0.7 }}> Or</p>
+          <div style={{ height: '2px', backgroundColor: 'var(--black01)', width: '100px' }}></div>
+        </Box>
 
-      {isSeller ? <Button>Continue as customer</Button> : <Button>Continue as Seller</Button>}
+        {isSeller ? (
+          <Button onClick={continueAsBuyer} disabled={isLoading}>
+            Continue as customer
+          </Button>
+        ) : (
+          <Button onClick={continueAsSeller}>Continue as Seller</Button>
+        )}
+      </form>
     </div>
   );
 };
