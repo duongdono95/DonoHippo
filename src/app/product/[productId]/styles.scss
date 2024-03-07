@@ -1,0 +1,41 @@
+.product-page {
+  min-height: 100vh;
+  height: 100%;
+  padding-top: 80px;
+  h1 {
+    opacity: 0.7;
+  }
+  .content {
+    width: 100%;
+    margin: 0 auto;
+    max-width: var(--default-layout-width);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    .items {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .intro {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .product-reel {
+    width: 100%;
+    background-color: var(--primary01);
+    margin-top: 50px;
+  }
+}

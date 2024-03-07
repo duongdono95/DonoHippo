@@ -1,4 +1,6 @@
+'use client';
 import { formatPrice } from '@/hooks/generalHooks';
+import { useCart } from '@/hooks/use-cart';
 import { Box, Button, Divider, styled } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,7 +13,10 @@ const ListItem = styled('div')({
   margin: '20px 0',
 });
 const Cart = () => {
-  const itemCount = 0;
+  const { items } = useCart();
+  const itemCount = items.length;
+
+  const cartTotal = items.reduce((total, { product }) => total + product.price, 0);
   const fee = 1;
   return (
     <Box
@@ -32,7 +37,7 @@ const Cart = () => {
             </ListItem>
             <ListItem>
               <p>Transaction Fee</p>
-              <p>{formatPrice(fee)}</p>
+              <p>{formatPrice(cartTotal + fee)}</p>
             </ListItem>
           </Box>
           <Link href={'/cart'}>

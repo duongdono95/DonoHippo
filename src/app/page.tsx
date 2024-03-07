@@ -2,6 +2,7 @@ import { Button } from '@mui/material';
 import { ArrowDownToLine, ArrowRight, BadgeCheck, Clover } from 'lucide-react';
 import './styles.scss';
 import { Navbar } from '@/components/NavBar/NavBar';
+import ProductReel from '@/components/ProductReel';
 export default function Home() {
   const perks = [
     {
@@ -22,13 +23,12 @@ export default function Home() {
   ];
   return (
     <div className={'home-page'}>
-      <Navbar />
       <div className="top">
         <h1 style={{ textAlign: 'center' }}>
           Your marketplace for high-quality <span style={{ color: 'var(--secondary)' }}>DIGITAL ASSETS</span>.
         </h1>
         <p style={{ textAlign: 'center' }}>
-          Welcome to DigitalHippo. Every asset on our platform is verified by our team to ensure out highest quality
+          Welcome to DonoHippo. Every asset on our platform is verified by our team to ensure out highest quality
           standards
         </p>
         <div className="buttons">
@@ -37,6 +37,9 @@ export default function Home() {
             Our quality promise <ArrowRight />
           </Button>
         </div>
+      </div>
+      <div className="center">
+        <ProductReel href="/products" title={'Brand New'} query={{ sort: 'desc', limit: 4 }} />
       </div>
       <div className="bottom">
         <div className="perks">

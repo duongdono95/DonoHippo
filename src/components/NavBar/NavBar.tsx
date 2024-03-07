@@ -6,12 +6,16 @@ import { useRef, useState } from 'react';
 import { CircleUser, ShoppingCart } from 'lucide-react';
 import Cart from '../Cart';
 import { useRouter } from 'next/navigation';
+import { User } from '@/payload-types';
+import UserAccountNav from './UserAccountNav';
 
-export const Navbar = () => {
+interface Props {
+  user: User | null;
+}
+
+export const Navbar = ({ user }: Props) => {
   const appBarRef = useRef<HTMLDivElement>(null);
-  const user = false;
   const [openDrawer, setOpenDrawer] = useState(false);
-
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpenDrawer(newOpen);
   };
@@ -40,10 +44,7 @@ export const Navbar = () => {
         <NavItems appBarRef={appBarRef} />
         {user ? (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <Button variant="text" color="info" sx={{ display: 'flex', gap: '10px' }}>
-              <CircleUser size={20} />
-              My Account
-            </Button>
+            <UserAccountNav user={user} />
             <Divider orientation="vertical" flexItem />
             <IconButton onClick={toggleDrawer(true)}>
               <ShoppingCart size={20} />

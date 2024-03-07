@@ -20,6 +20,10 @@
     justify-content: center;
     padding: 100px 20px 20px 20px;
   }
+  .center {
+    width: 100%;
+    background-color: var(--black01);
+  }
   .bottom {
     width: 100vw;
     z-index: -1;
