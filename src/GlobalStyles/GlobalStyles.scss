@@ -124,12 +124,8 @@ html *::-webkit-scrollbar-track {
     transform: scale(1.2);
   }
 }
-
-.animated-tilt-shaking {
-  animation: tilt-shaking 1s linear infinite;
-}
-.animated-tilt-shaking-fast {
-  animation: tilt-shaking 0.2s linear infinite;
+.animated-rotation {
+  animation: rotation 1s infinite linear;
 }
 
 @keyframes rotation {

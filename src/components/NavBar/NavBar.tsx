@@ -5,15 +5,17 @@ import { NavItems } from './NavItems';
 import { useRef, useState } from 'react';
 import { CircleUser, ShoppingCart } from 'lucide-react';
 import Cart from '../Cart';
+import { useRouter } from 'next/navigation';
 
 export const Navbar = () => {
   const appBarRef = useRef<HTMLDivElement>(null);
-  const user = true;
+  const user = false;
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpenDrawer(newOpen);
   };
+  const route = useRouter();
   return (
     <AppBar
       color="transparent"
@@ -49,17 +51,17 @@ export const Navbar = () => {
           </Box>
         ) : (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <Button variant="text" color="info">
+            <Button variant="text" color="info" onClick={() => route.push('/sign-in')}>
               Sign In
             </Button>
             <Divider orientation="vertical" flexItem />
-            <Button variant="outlined" color="info">
+            <Button variant="outlined" color="primary" onClick={() => route.push('/sign-up')}>
               Create Account
             </Button>
           </Box>
         )}
       </Box>
-      <Drawer anchor={'right'} open={openDrawer} onClose={toggleDrawer(false)}>
+      <Drawer anchor={'right'} open={openDrawer} onClose={toggleDrawer(false)} onClick={() => route.push('/cart')}>
         <Cart />
       </Drawer>
     </AppBar>

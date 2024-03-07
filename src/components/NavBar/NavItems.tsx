@@ -3,6 +3,7 @@ import { PRODUCT_CATEGORIES } from '@/config';
 import { Box, Button, Popover } from '@mui/material';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { ProductCategoryInterface } from '@/types/generalTypes';
 import ProductCategory from './ProductCategory';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 }
 
 export const NavItems = ({ appBarRef }: Props) => {
-  const [activeCategory, setActiveCategory] = useState<ProductCategory | null>(null);
+  const [activeCategory, setActiveCategory] = useState<ProductCategoryInterface | null>(null);
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
 
   return (

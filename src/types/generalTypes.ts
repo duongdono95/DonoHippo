@@ -1,12 +1,12 @@
 import { z } from 'zod';
 
-interface FeaturedItem {
+export interface FeaturedItem {
   name: string;
   href: string;
   imageSrc: string;
 }
 
-interface ProductCategory {
+export interface ProductCategoryInterface {
   label: string;
   value: 'ui_kits' | 'icons';
   featured: FeaturedItem[];

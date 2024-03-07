@@ -4,13 +4,14 @@ import { Dispatch, SetStateAction, useRef } from 'react';
 import Image from 'next/image';
 import { useOutsideClick } from '@/hooks/generalHooks';
 import { useRouter } from 'next/navigation';
+import { ProductCategoryInterface } from '@/types/generalTypes';
 
-const ProductCategory = ({
+const ProductCategoryInterface = ({
   activeCategory,
   setActiveCategory,
 }: {
-  activeCategory: ProductCategory;
-  setActiveCategory: Dispatch<SetStateAction<ProductCategory | null>>;
+  activeCategory: ProductCategoryInterface;
+  setActiveCategory: Dispatch<SetStateAction<ProductCategoryInterface | null>>;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   useOutsideClick(ref, () => setActiveCategory(null));
@@ -77,4 +78,4 @@ const ProductCategory = ({
   );
 };
 
-export default ProductCategory;
+export default ProductCategoryInterface;

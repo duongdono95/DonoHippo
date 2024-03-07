@@ -10,7 +10,7 @@ export const GlobalTheme = createTheme({
       main: `rgb(var(--secondary-code))`,
     },
     error: {
-      main: `rgba(var(--error-code))`,
+      main: `rgba(255, 0, 0, 1)`,
     },
     success: {
       main: `rgba(var(--success-code))`,

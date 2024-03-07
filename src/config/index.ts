@@ -1,4 +1,6 @@
-export const PRODUCT_CATEGORIES:ProductCategory[]  = [
+import { ProductCategoryInterface } from '@/types/generalTypes';
+
+export const PRODUCT_CATEGORIES: ProductCategoryInterface[] = [
   {
     label: 'UI Kits',
     value: 'ui_kits' as const,
