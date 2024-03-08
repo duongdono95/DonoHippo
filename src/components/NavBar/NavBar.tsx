@@ -2,7 +2,7 @@
 import { AppBar, Box, Button, Divider, Drawer, IconButton } from '@mui/material';
 import { Icons } from '../Icons';
 import { NavItems } from './NavItems';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CircleUser, ShoppingCart } from 'lucide-react';
 import Cart from '../Cart';
 import { useRouter } from 'next/navigation';
@@ -19,7 +19,12 @@ export const Navbar = ({ user }: Props) => {
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpenDrawer(newOpen);
   };
+  const [localUser, setLocalUser] = useState<User | null>(null);
   const route = useRouter();
+  useEffect(() => {
+    if (user) setLocalUser(user);
+    route.refresh();
+  }, [user]);
   return (
     <AppBar
       color="transparent"
@@ -42,7 +47,7 @@ export const Navbar = ({ user }: Props) => {
       >
         <Icons.logo />
         <NavItems appBarRef={appBarRef} />
-        {user ? (
+        {localUser ? (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <UserAccountNav user={user} />
             <Divider orientation="vertical" flexItem />
@@ -62,7 +67,7 @@ export const Navbar = ({ user }: Props) => {
           </Box>
         )}
       </Box>
-      <Drawer anchor={'right'} open={openDrawer} onClose={toggleDrawer(false)} onClick={() => route.push('/cart')}>
+      <Drawer anchor={'right'} open={openDrawer} onClose={toggleDrawer(false)}>
         <Cart />
       </Drawer>
     </AppBar>

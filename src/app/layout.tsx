@@ -1,6 +1,6 @@
 import AppGeneralConfig from '@/GlobalStyles/AppGeneralConfig';
 import { Navbar } from '@/components/NavBar/NavBar';
-import Provider from '@/components/Provider';
+
 import { getServerSideUser } from '@/libs/payload.utils';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -21,14 +21,12 @@ export default async function RootLayout({
   const { user } = await getServerSideUser(nextCookies);
   return (
     <html lang="en">
-      <Provider>
+      <body className={inter.className}>
         <AppGeneralConfig>
-          <body className={inter.className}>
-            <Navbar user={user} />
-            {children}
-          </body>
+          <Navbar user={user} />
+          {children}
         </AppGeneralConfig>
-      </Provider>
+      </body>
     </html>
   );
 }

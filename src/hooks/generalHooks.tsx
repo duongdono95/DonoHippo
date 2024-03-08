@@ -1,3 +1,4 @@
+'use client';
 import { RefObject, useEffect, useState } from 'react';
 
 export const useDivSizeThroughRef = (ref: React.RefObject<HTMLDivElement>, type: 'height' | 'width') => {

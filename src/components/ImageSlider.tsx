@@ -98,12 +98,7 @@ const ImageSlider = ({ urls, size }: Props) => {
           )}
         </IconButton>
       </Box>
-      <Swiper
-        onSwiper={(swiper) => setSwiper(swiper)}
-        // spaceBetween={'50px'}
-        slidesPerView={1}
-        modules={[Pagination]}
-      >
+      <Swiper onSwiper={(swiper) => setSwiper(swiper)} modules={[Pagination]}>
         {urls.map((url, i) => (
           <SwiperSlide key={i}>
             <Box

@@ -4,6 +4,8 @@ import { useCart } from '@/hooks/use-cart';
 import { Box, Button, Divider, styled } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
+import CartItem from './CartItem';
+import { useEffect, useState } from 'react';
 
 const ListItem = styled('div')({
   width: '400px',
@@ -15,9 +17,13 @@ const ListItem = styled('div')({
 const Cart = () => {
   const { items } = useCart();
   const itemCount = items.length;
-
+  const [isMounted, setIsMounted] = useState(false);
   const cartTotal = items.reduce((total, { product }) => total + product.price, 0);
   const fee = 1;
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <Box
       sx={{
@@ -25,12 +31,17 @@ const Cart = () => {
         padding: '50px 20px',
       }}
     >
-      <h3 style={{ textAlign: 'center', opacity: 0.9 }}>Cart({itemCount})</h3>
+      <h3 style={{ textAlign: 'center', opacity: 0.9 }}>Cart({isMounted ? itemCount : 0})</h3>
       {itemCount > 0 ? (
         <Box>
           <h4 style={{ opacity: 0.7 }}>Cart Items</h4>
           <Divider sx={{ padding: '10px 0' }} />
           <Box sx={{ padding: '20px 10px' }}>
+            <Box>
+              {items.map(({ product }, index) => (
+                <CartItem product={product} key={index} />
+              ))}
+            </Box>
             <ListItem>
               <p>Shipping</p>
               <p>Free</p>

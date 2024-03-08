@@ -49,6 +49,7 @@ const page = () => {
         router.push('/sell');
         return;
       }
+      router.refresh();
       router.push('/');
     },
   });

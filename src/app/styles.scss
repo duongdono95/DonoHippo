@@ -22,7 +22,8 @@
   }
   .center {
     width: 100%;
-    background-color: var(--black01);
+    background-color: var(--primary01);
+    padding: 20px 0;
   }
   .bottom {
     width: 100vw;
@@ -31,7 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary01);
+
     border-top: 1px solid var(--primary03);
     padding: 20px;
     .perks {
