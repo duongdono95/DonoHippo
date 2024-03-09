@@ -2,7 +2,7 @@
 import { Box, Button, Zoom } from '@mui/material';
 import { Dispatch, SetStateAction, useRef } from 'react';
 import Image from 'next/image';
-import { useOutsideClick } from '@/hooks/generalHooks';
+import { useOutsideClick } from '../../hooks/generalHooks';
 import { useRouter } from 'next/navigation';
 import { ProductCategoryInterface } from '@/types/generalTypes';
 
@@ -40,7 +40,6 @@ const ProductCategoryInterface = ({
         >
           {activeCategory &&
             activeCategory.featured.map((feature) => {
-              console.log(feature);
               return (
                 <Box
                   key={feature.name}

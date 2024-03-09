@@ -1,5 +1,5 @@
 'use client';
-import { formatPrice } from '@/hooks/generalHooks';
+import { formatPrice } from '../hooks/generalHooks';
 import { useCart } from '@/hooks/use-cart';
 import { Box, Button, Divider, styled } from '@mui/material';
 import Image from 'next/image';
@@ -14,7 +14,11 @@ const ListItem = styled('div')({
   justifyContent: 'space-between',
   margin: '20px 0',
 });
-const Cart = () => {
+
+interface Props {
+  toggleDrawer: (newOpen: boolean) => () => void;
+}
+const Cart = ({ toggleDrawer }: Props) => {
   const { items } = useCart();
   const itemCount = items.length;
   const [isMounted, setIsMounted] = useState(false);
@@ -39,7 +43,7 @@ const Cart = () => {
           <Box sx={{ padding: '20px 10px' }}>
             <Box>
               {items.map(({ product }, index) => (
-                <CartItem product={product} key={index} />
+                <CartItem product={product} key={product.id} />
               ))}
             </Box>
             <ListItem>
@@ -51,7 +55,7 @@ const Cart = () => {
               <p>{formatPrice(cartTotal + fee)}</p>
             </ListItem>
           </Box>
-          <Link href={'/cart'}>
+          <Link href={'/cart'} onClick={() => toggleDrawer(false)}>
             <Button variant="contained" fullWidth>
               Continue To Checkout
             </Button>

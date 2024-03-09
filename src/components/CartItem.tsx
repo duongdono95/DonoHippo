@@ -1,9 +1,9 @@
 import { PRODUCT_CATEGORIES } from '@/config';
-import { formatPrice } from '@/hooks/generalHooks';
+import { formatPrice } from '../hooks/generalHooks';
 import { useCart } from '@/hooks/use-cart';
 import { Product } from '@/payload-types';
 import { Box, IconButton } from '@mui/material';
-import { BoxesIcon, ImageIcon, Trash } from 'lucide-react';
+import { ImageIcon, Trash } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 

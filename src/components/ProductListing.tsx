@@ -4,7 +4,7 @@ import { Product } from '../payload-types';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { PRODUCT_CATEGORIES } from '@/config';
-import { formatPrice } from '@/hooks/generalHooks';
+import { formatPrice } from '../hooks/generalHooks';
 import ImageSlider from './ImageSlider';
 
 const ProductPlaceHolder = () => {

@@ -5,6 +5,7 @@ import { getServerSideUser } from '@/libs/payload.utils';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { cookies } from 'next/headers';
+import { User } from '@/payload-types';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {

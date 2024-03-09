@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import './styles.scss';
 import Link from 'next/link';
 import { Check, Shield, Slash } from 'lucide-react';
-import { Button, Divider } from '@mui/material';
+import { Divider } from '@mui/material';
 import ImageSlider from '@/components/ImageSlider';
 import ProductReel from '@/components/ProductReel';
 import AddToCartButton from '@/components/AddToCartButton';
@@ -15,7 +15,7 @@ interface Props {
   };
 }
 
-export function formatPrice(
+function formatPrice(
   price: number | string,
   options: {
     currency?: 'USD' | 'EUR' | 'GBP' | 'BDT';
@@ -71,7 +71,7 @@ const page = async ({ params }: Props) => {
       <div className="content">
         <div className="breadcrumb">
           {BREADCRUMBS.map((category, index) => (
-            <div className="items">
+            <div className="items" key={index}>
               <Link href={category.href} key={index} style={{ color: 'var(--black07)' }}>
                 {category.name}
               </Link>

@@ -8,6 +8,7 @@ import Cart from '../Cart';
 import { useRouter } from 'next/navigation';
 import { User } from '@/payload-types';
 import UserAccountNav from './UserAccountNav';
+import Link from 'next/link';
 
 interface Props {
   user: User | null;
@@ -23,7 +24,6 @@ export const Navbar = ({ user }: Props) => {
   const route = useRouter();
   useEffect(() => {
     if (user) setLocalUser(user);
-    route.refresh();
   }, [user]);
   return (
     <AppBar
@@ -45,7 +45,9 @@ export const Navbar = ({ user }: Props) => {
           zIndex: 10,
         }}
       >
-        <Icons.logo />
+        <Link href={'/'}>
+          <Icons.logo />
+        </Link>
         <NavItems appBarRef={appBarRef} />
         {localUser ? (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -68,7 +70,7 @@ export const Navbar = ({ user }: Props) => {
         )}
       </Box>
       <Drawer anchor={'right'} open={openDrawer} onClose={toggleDrawer(false)}>
-        <Cart />
+        <Cart toggleDrawer={toggleDrawer} />
       </Drawer>
     </AppBar>
   );

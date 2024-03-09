@@ -10,8 +10,13 @@ export const getServerSideUser = async (cookies: NextRequest['cookies'] | Readon
       Authorization: `JWT ${token}`,
     },
   });
+  const fethcedUser = await meRes.json();
+  if (!fethcedUser) {
+    console.error('Expected JSON response, got:', fethcedUser);
+    return { user: null };
+  }
 
-  const { user } = (await meRes.json()) as {
+  const { user } = fethcedUser as {
     user: User | null;
   };
 
